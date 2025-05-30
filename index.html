@@ -8,6 +8,14 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap" rel="stylesheet">
+
+  <!-- Redirect från www.sonria.se till sonria.se -->
+  <script>
+    if (location.hostname === "www.sonria.se") {
+      location.href = "https://sonria.se" + location.pathname + location.search + location.hash;
+    }
+  </script>
+
   <style>
     body {
       margin: 0;
@@ -47,20 +55,4 @@
     }
 
     @keyframes fadeInText {
-      to { opacity: 1; }
-    }
-
-    @keyframes fadeInImage {
-      to { opacity: 1; }
-    }
-  </style>
-</head>
-<body>
-  <div class="wrapper">
-    <div class="container">Det mesta är omöjligt men kul att du försöker! (✿^‿^)</div>
-    <a href="https://open.spotify.com/track/2BBIUV8wIBbqc7HXObzdgH?si=60617fcd82a94dc1" target="_blank" rel="noopener">
-      <img src="rosett_2.png" alt="Rosett" class="rosett">
-    </a>
-  </div>
-</body>
-</html>
+      to {
