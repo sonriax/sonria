@@ -62,4 +62,77 @@
       opacity: 0;
       animation: fadeInImage 2s ease-out forwards;
       animation-delay: 2.5s;
-      animation-fil
+      animation-fill-mode: forwards;
+      transition: transform 0.3s ease;
+    }
+
+    .rosett:hover {
+      transform: scale(1.15) rotate(5deg);
+      cursor: pointer;
+    }
+
+    @keyframes fadeInText {
+      to { opacity: 1; }
+    }
+
+    @keyframes fadeInImage {
+      to { opacity: 1; }
+    }
+
+    .sparkle {
+      position: fixed;
+      pointer-events: none;
+      animation: fadeOut 1s forwards;
+      z-index: 9999;
+    }
+
+    .sparkle.mouse {
+      font-size: 1.2rem;
+    }
+
+    .sparkle.touch {
+      font-size: 3rem;
+    }
+
+    @keyframes fadeOut {
+      0% { opacity: 1; transform: translateY(0) scale(1); }
+      100% { opacity: 0; transform: translateY(-20px) scale(0.5); }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrapper">
+    <div class="container">Det mesta är omöjligt men kul att du försöker! (✿^‿^)</div>
+    <a href="https://open.spotify.com/track/2BBIUV8wIBbqc7HXObzdgH?si=60617fcd82a94dc1" target="_blank" rel="noopener">
+      <img src="rosett_2.png" alt="Rosett" class="rosett">
+    </a>
+  </div>
+
+  <script>
+    function createSparkle(x, y, type) {
+      const sparkle = document.createElement('div');
+      sparkle.textContent = '✨';
+      sparkle.className = `sparkle ${type}`;
+      sparkle.style.left = x + 'px';
+      sparkle.style.top = y + 'px';
+      document.body.appendChild(sparkle);
+      setTimeout(() => sparkle.remove(), 1000);
+    }
+
+    // Mouse trail (desktop)
+    document.addEventListener('mousemove', e => {
+      if (window.matchMedia('(hover: hover)').matches) {
+        createSparkle(e.pageX, e.pageY, 'mouse');
+      }
+    });
+
+    // Touch glitter (mobil)
+    document.addEventListener('touchstart', e => {
+      for (let i = 0; i < e.touches.length; i++) {
+        const touch = e.touches[i];
+        createSparkle(touch.pageX, touch.pageY, 'touch');
+      }
+    });
+  </script>
+</body>
+</html>
