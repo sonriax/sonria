@@ -22,19 +22,43 @@
       padding: 1rem;
     }
 
-    .container {
-      font-size: clamp(1.5rem, 5vw, 2rem);
+    .wrapper {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1.5rem;
       max-width: 90vw;
-      opacity: 0;
-      animation: fadeIn 2s ease-out forwards;
     }
 
-    @keyframes fadeIn {
+    .container {
+      font-size: clamp(1.5rem, 5vw, 2rem);
+      opacity: 0;
+      animation: fadeInText 2s ease-out forwards;
+    }
+
+    .rosett {
+      width: 25%;
+      max-width: 150px;
+      opacity: 0;
+      animation: fadeInImage 2s ease-out forwards;
+      animation-delay: 2.5s;
+    }
+
+    @keyframes fadeInText {
+      to { opacity: 1; }
+    }
+
+    @keyframes fadeInImage {
       to { opacity: 1; }
     }
   </style>
 </head>
 <body>
-  <div class="container">Det mesta är omöjligt men kul att du försöker! (✿^‿^)</div>
+  <div class="wrapper">
+    <div class="container">Det mesta är omöjligt men kul att du försöker! (✿^‿^)</div>
+    <a href="https://open.spotify.com/track/2BBIUV8wIBbqc7HXObzdgH?si=60617fcd82a94dc1" target="_blank" rel="noopener">
+      <img src="rosett_2.png" alt="Rosett" class="rosett">
+    </a>
+  </div>
 </body>
 </html>
