@@ -14,7 +14,6 @@
   <meta name="twitter:card" content="summary_large_image" />
 
   <link rel="icon" href="https://fav.farm/🎀" type="image/x-icon" />
-
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap" rel="stylesheet" />
@@ -27,47 +26,47 @@
 
   <style>
     :root {
-      --primary-bg-dark: #FF69B4; /* Deep Pink */
-      --primary-bg-light: #FFC0CB; /* Pink */
-      --text-color: #1A1A1A; /* Very Dark Gray */
+      --primary-bg-dark: #FF69B4;
+      --primary-bg-light: #FFC0CB;
+      --text-color: #1A1A1A;
     }
 
     body {
       margin: 0;
-      background-color: var(--primary-bg-light); /* Fallback for older browsers */
+      background-color: var(--primary-bg-light);
       background: linear-gradient(135deg, var(--primary-bg-dark), var(--primary-bg-light));
       color: var(--text-color);
       font-family: "Quicksand", sans-serif;
       display: flex;
       justify-content: center;
       align-items: center;
-      min-height: 100vh; /* Ensures full viewport height, allows content to grow */
+      min-height: 100vh;
       text-align: center;
       padding: 1rem;
-      touch-action: manipulation; /* Improves touch responsiveness by disabling default browser gestures */
+      touch-action: manipulation;
     }
 
     .wrapper {
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 1.5rem; /* Space between elements */
+      gap: 1.5rem;
       max-width: 90vw;
     }
 
     .container {
-      font-size: clamp(1.5rem, 5vw, 2rem); /* Responsive font sizing */
+      font-size: clamp(1.5rem, 5vw, 2rem);
       opacity: 0;
-      animation: fadeInText 2s ease-out forwards; /* Text fade-in animation */
+      animation: fadeInText 2s ease-out forwards;
     }
 
     .rosett {
-      width: 5.5em; /* Relative width based on font size */
+      width: 5.5em;
       max-width: 90vw;
       opacity: 0;
-      animation: fadeInImage 2s ease-out forwards; /* Image fade-in animation */
-      animation-delay: 2.5s; /* Delay for image animation */
-      transition: transform 0.3s ease; /* Smooth transform on hover */
+      animation: fadeInImage 2s ease-out forwards;
+      animation-delay: 2.5s;
+      transition: transform 0.3s ease;
     }
 
     .rosett:hover {
@@ -85,66 +84,12 @@
 
     .sparkle {
       position: fixed;
-      pointer-events: none; /* Allows clicks to pass through */
-      animation: fadeOut 1s forwards; /* Sparkle fade-out animation */
-      z-index: 9999; /* Ensures sparkles are on top */
-      white-space: nowrap; /* Prevents emoji from breaking into multiple lines */
+      pointer-events: none;
+      animation: fadeOut 1s forwards;
+      z-index: 9999;
+      white-space: nowrap;
     }
 
     .sparkle.mouse {
       font-size: 1.2rem;
     }
-
-    .sparkle.touch {
-      font-size: 3rem;
-    }
-
-    @keyframes fadeOut {
-      0% { opacity: 1; transform: translateY(0) scale(1); }
-      100% { opacity: 0; transform: translateY(-20px) scale(0.5); }
-    }
-  </style>
-</head>
-<body>
-  <div class="wrapper">
-    <div class="container">Det mesta är omöjligt, men kul att du försöker! (✿^‿^)</div>
-    <a href="open.spotify.com" target="_blank" rel="noopener noreferrer" aria-label="Lyssna på Spotify">
-      <img src="rosett_2.png" alt="Dekorativ rosett som länkar till Spotify" class="rosett" loading="lazy" />
-    </a>
-  </div>
-
-  <script>
-    function createSparkle(x, y, type) {
-      const sparkle = document.createElement('div');
-      sparkle.textContent = '✨';
-      sparkle.className = `sparkle ${type}`;
-      sparkle.style.left = x + 'px';
-      sparkle.style.top = y + 'px';
-      document.body.appendChild(sparkle);
-      setTimeout(() => sparkle.remove(), 1000);
-    }
-
-    let lastSparkleTime = 0;
-    const sparkleThrottle = 50; // Milliseconds between each sparkle for mouse movement
-
-    document.addEventListener('mousemove', e => {
-      // Only create sparkles on devices that support hover (typically desktops)
-      if (window.matchMedia('(hover: hover)').matches) {
-        const now = Date.now();
-        // Throttle the sparkle creation to improve performance
-        if (now - lastSparkleTime > sparkleThrottle) {
-          createSparkle(e.pageX, e.pageY, 'mouse');
-          lastSparkleTime = now;
-        }
-      }
-    });
-
-    // Create sparkles on touch events (for mobile devices)
-    document.addEventListener('touchstart', e => {
-      for (let touch of e.touches) {
-        createSparkle(touch.pageX, touch.pageY, 'touch');
-      }
-    });
-  </script>
-</body>
-</html>
