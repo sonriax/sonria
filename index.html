@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>sonria</title>
 
-  <meta name="description" content="Christian Andersson – digital strateg i Helsingborg.">
+  <meta name="description" content="Christian Andersson – digital strateg i Helsingborg." />
   <meta property="og:title" content="sonria.se" />
   <meta property="og:description" content="Christian Andersson – digital strateg i Helsingborg." />
   <meta property="og:image" content="https://sonria.se/og-image.png" />
@@ -13,11 +13,11 @@
   <meta property="og:type" content="website" />
   <meta name="twitter:card" content="summary_large_image" />
 
-  <link rel="icon" href="https://fav.farm/🎀" type="image/x-icon">
+  <link rel="icon" href="https://fav.farm/🎀" type="image/x-icon" />
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap" rel="stylesheet" />
 
   <script>
     if (location.hostname === "www.sonria.se") {
@@ -26,44 +26,48 @@
   </script>
 
   <style>
+    :root {
+      --primary-bg-dark: #FF69B4; /* Deep Pink */
+      --primary-bg-light: #FFC0CB; /* Pink */
+      --text-color: #1A1A1A; /* Very Dark Gray */
+    }
+
     body {
       margin: 0;
-      background: linear-gradient(135deg, #FF69B4, #FFC0CB);
-      color: #1A1A1A;
+      background-color: var(--primary-bg-light); /* Fallback for older browsers */
+      background: linear-gradient(135deg, var(--primary-bg-dark), var(--primary-bg-light));
+      color: var(--text-color);
       font-family: "Quicksand", sans-serif;
       display: flex;
       justify-content: center;
       align-items: center;
-      height: 100vh;
+      min-height: 100vh; /* Ensures full viewport height, allows content to grow */
       text-align: center;
       padding: 1rem;
-      overflow: hidden;
-      touch-action: manipulation;
+      touch-action: manipulation; /* Improves touch responsiveness by disabling default browser gestures */
     }
 
     .wrapper {
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 1.5rem;
+      gap: 1.5rem; /* Space between elements */
       max-width: 90vw;
     }
 
     .container {
-      font-size: clamp(1.5rem, 5vw, 2rem);
+      font-size: clamp(1.5rem, 5vw, 2rem); /* Responsive font sizing */
       opacity: 0;
-      animation: fadeInText 2s ease-out forwards;
-      animation-fill-mode: forwards;
+      animation: fadeInText 2s ease-out forwards; /* Text fade-in animation */
     }
 
     .rosett {
-      width: 5.5em;
+      width: 5.5em; /* Relative width based on font size */
       max-width: 90vw;
       opacity: 0;
-      animation: fadeInImage 2s ease-out forwards;
-      animation-delay: 2.5s;
-      animation-fill-mode: forwards;
-      transition: transform 0.3s ease;
+      animation: fadeInImage 2s ease-out forwards; /* Image fade-in animation */
+      animation-delay: 2.5s; /* Delay for image animation */
+      transition: transform 0.3s ease; /* Smooth transform on hover */
     }
 
     .rosett:hover {
@@ -81,9 +85,10 @@
 
     .sparkle {
       position: fixed;
-      pointer-events: none;
-      animation: fadeOut 1s forwards;
-      z-index: 9999;
+      pointer-events: none; /* Allows clicks to pass through */
+      animation: fadeOut 1s forwards; /* Sparkle fade-out animation */
+      z-index: 9999; /* Ensures sparkles are on top */
+      white-space: nowrap; /* Prevents emoji from breaking into multiple lines */
     }
 
     .sparkle.mouse {
@@ -103,8 +108,8 @@
 <body>
   <div class="wrapper">
     <div class="container">Det mesta är omöjligt, men kul att du försöker! (✿^‿^)</div>
-    <a href="https://open.spotify.com/track/2BBIUV8wIBbqc7HXObzdgH?si=60617fcd82a94dc1" target="_blank" rel="noopener">
-      <img src="rosett_2.png" alt="Rosett" class="rosett">
+    <a href="https://open.spotify.com/" target="_blank" rel="noopener noreferrer" aria-label="Lyssna på Spotify">
+      <img src="rosett_2.png" alt="Dekorativ rosett som länkar till Spotify" class="rosett" loading="lazy" />
     </a>
   </div>
 
@@ -119,17 +124,24 @@
       setTimeout(() => sparkle.remove(), 1000);
     }
 
-    // Mouse trail (desktop)
+    let lastSparkleTime = 0;
+    const sparkleThrottle = 50; // Milliseconds between each sparkle for mouse movement
+
     document.addEventListener('mousemove', e => {
+      // Only create sparkles on devices that support hover (typically desktops)
       if (window.matchMedia('(hover: hover)').matches) {
-        createSparkle(e.pageX, e.pageY, 'mouse');
+        const now = Date.now();
+        // Throttle the sparkle creation to improve performance
+        if (now - lastSparkleTime > sparkleThrottle) {
+          createSparkle(e.pageX, e.pageY, 'mouse');
+          lastSparkleTime = now;
+        }
       }
     });
 
-    // Touch glitter (mobil)
+    // Create sparkles on touch events (for mobile devices)
     document.addEventListener('touchstart', e => {
-      for (let i = 0; i < e.touches.length; i++) {
-        const touch = e.touches[i];
+      for (let touch of e.touches) {
         createSparkle(touch.pageX, touch.pageY, 'touch');
       }
     });
