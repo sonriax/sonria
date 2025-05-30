@@ -11,7 +11,7 @@
   <style>
     body {
       margin: 0;
-      background-color: #FF69B4;
+      background: linear-gradient(135deg, #FF69B4, #FFC0CB);
       color: #1A1A1A;
       font-family: "Quicksand", sans-serif;
       display: flex;
@@ -24,10 +24,10 @@
 
     .container {
       font-size: clamp(1.5rem, 5vw, 2.5rem);
-      white-space: pre-line;
+      white-space: nowrap;
       overflow: hidden;
       border-right: 0.15em solid #1A1A1A;
-      animation: typing 4s steps(50, end), blink-caret 0.75s step-end infinite;
+      animation: typing 10s steps(70, end), blink-caret 0.75s step-end infinite;
     }
 
     @keyframes typing {
@@ -42,8 +42,6 @@
   </style>
 </head>
 <body>
-  <div class="container">
-    Det mesta är omöjligt<br>men kul att du försöker! (✿^‿^)
-  </div>
+  <div class="container">Det mesta är omöjligt men kul att du försöker! (✿^‿^)</div>
 </body>
 </html>
