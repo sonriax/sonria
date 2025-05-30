@@ -19,14 +19,15 @@
       align-items: center;
       height: 100vh;
       text-align: center;
+      padding: 1rem;
     }
 
     .container {
       font-size: clamp(1.5rem, 5vw, 2.5rem);
-      white-space: nowrap;
+      white-space: pre-line;
       overflow: hidden;
       border-right: 0.15em solid #1A1A1A;
-      animation: typing 2s steps(40, end), blink-caret 0.75s step-end infinite;
+      animation: typing 4s steps(50, end), blink-caret 0.75s step-end infinite;
     }
 
     @keyframes typing {
@@ -41,6 +42,8 @@
   </style>
 </head>
 <body>
-  <div class="container">🎀 Det mesta är omöjligt men kul att du försöker! (✿^‿^) 🎀</div>
+  <div class="container">
+    Det mesta är omöjligt<br>men kul att du försöker! (✿^‿^)
+  </div>
 </body>
 </html>
