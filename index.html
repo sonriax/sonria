@@ -38,6 +38,7 @@
       text-align: center;
       padding: 1rem;
       overflow: hidden;
+      touch-action: manipulation;
     }
 
     .wrapper {
@@ -83,6 +84,7 @@
       pointer-events: none;
       font-size: 1rem;
       animation: fadeOut 1s forwards;
+      z-index: 9999;
     }
 
     @keyframes fadeOut {
@@ -100,14 +102,29 @@
   </div>
 
   <script>
-    document.addEventListener('mousemove', e => {
+    function createSparkle(x, y) {
       const sparkle = document.createElement('div');
       sparkle.textContent = '✨';
       sparkle.className = 'sparkle';
-      sparkle.style.left = e.pageX + 'px';
-      sparkle.style.top = e.pageY + 'px';
+      sparkle.style.left = x + 'px';
+      sparkle.style.top = y + 'px';
       document.body.appendChild(sparkle);
       setTimeout(() => sparkle.remove(), 1000);
+    }
+
+    // Mouse trail (desktop)
+    document.addEventListener('mousemove', e => {
+      if (window.matchMedia('(hover: hover)').matches) {
+        createSparkle(e.pageX, e.pageY);
+      }
+    });
+
+    // Touch glitter (mobil)
+    document.addEventListener('touchstart', e => {
+      for (let i = 0; i < e.touches.length; i++) {
+        const touch = e.touches[i];
+        createSparkle(touch.pageX, touch.pageY);
+      }
     });
   </script>
 </body>
