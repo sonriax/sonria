@@ -23,8 +23,11 @@
     }
 
     .container {
-      font-size: clamp(1.5rem, 5vw, 2.5rem);
-      white-space: nowrap;
+      font-size: clamp(1.5rem, 5vw, 2rem);
+      max-width: 90vw;
+      width: fit-content;
+      white-space: normal;
+      text-wrap: balance;
       overflow: hidden;
       border-right: 0.15em solid #1A1A1A;
       animation: typing 10s steps(70, end), blink-caret 0.75s step-end infinite;
