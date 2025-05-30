@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>sonria</title>
 
-  <!-- Meta-beskrivning och social delning -->
   <meta name="description" content="Christian Andersson – digital strateg i Helsingborg.">
   <meta property="og:title" content="sonria.se" />
   <meta property="og:description" content="Christian Andersson – digital strateg i Helsingborg." />
@@ -14,15 +13,12 @@
   <meta property="og:type" content="website" />
   <meta name="twitter:card" content="summary_large_image" />
 
-  <!-- Favicon -->
   <link rel="icon" href="https://fav.farm/🎀" type="image/x-icon">
 
-  <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap" rel="stylesheet">
 
-  <!-- Redirect från www.sonria.se -->
   <script>
     if (location.hostname === "www.sonria.se") {
       location.href = "https://sonria.se" + location.pathname + location.search + location.hash;
@@ -41,6 +37,7 @@
       height: 100vh;
       text-align: center;
       padding: 1rem;
+      overflow: hidden;
     }
 
     .wrapper {
@@ -65,6 +62,12 @@
       animation: fadeInImage 2s ease-out forwards;
       animation-delay: 2.5s;
       animation-fill-mode: forwards;
+      transition: transform 0.3s ease;
+    }
+
+    .rosett:hover {
+      transform: scale(1.15) rotate(5deg);
+      cursor: pointer;
     }
 
     @keyframes fadeInText {
@@ -73,6 +76,18 @@
 
     @keyframes fadeInImage {
       to { opacity: 1; }
+    }
+
+    .sparkle {
+      position: fixed;
+      pointer-events: none;
+      font-size: 1rem;
+      animation: fadeOut 1s forwards;
+    }
+
+    @keyframes fadeOut {
+      0% { opacity: 1; transform: translateY(0) scale(1); }
+      100% { opacity: 0; transform: translateY(-20px) scale(0.5); }
     }
   </style>
 </head>
@@ -83,5 +98,17 @@
       <img src="rosett_2.png" alt="Rosett" class="rosett">
     </a>
   </div>
+
+  <script>
+    document.addEventListener('mousemove', e => {
+      const sparkle = document.createElement('div');
+      sparkle.textContent = '✨';
+      sparkle.className = 'sparkle';
+      sparkle.style.left = e.pageX + 'px';
+      sparkle.style.top = e.pageY + 'px';
+      document.body.appendChild(sparkle);
+      setTimeout(() => sparkle.remove(), 1000);
+    });
+  </script>
 </body>
 </html>
