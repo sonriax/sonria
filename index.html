@@ -85,7 +85,8 @@
       flex-direction: column;
       gap: 1rem;
       width: 100%;
-      max-width: 400px; /* Begränsa formulärbredden */
+      max-width: 300px; /* Gör formuläret mindre */
+      margin-inline: auto; /* Centrerar formuläret horisontellt */
       padding: 1.5rem;
       background-color: var(--form-bg);
       border-radius: 8px;
@@ -94,13 +95,6 @@
       opacity: 0;
       animation: fadeInForm 2s ease-out forwards;
       animation-delay: 3s; /* Animera in efter text och bild */
-    }
-
-    form label {
-      text-align: left;
-      font-weight: bold;
-      margin-bottom: 0.25rem;
-      display: block; /* Säkerställ att label är på egen rad */
     }
 
     form input[type="email"],
@@ -117,7 +111,7 @@
 
     form textarea {
       resize: vertical; /* Tillåt vertikal storleksändring */
-      min-height: 100px;
+      min-height: 80px; /* Gjort textrutan lite mindre */
     }
 
     form button {
@@ -180,13 +174,9 @@
     </a>
 
     <form action="https://formspree.io/f/xzzgprrj" method="POST">
-      <label for="email">Din e-post:</label>
-      <input type="email" name="email" id="email" required placeholder="ditt.namn@example.com">
-
-      <label for="message">Ditt meddelande:</label>
-      <textarea name="message" id="message" required placeholder="Skriv ditt meddelande här..."></textarea>
-
-      <button type="submit">Skicka meddelande</button>
+      <input type="email" name="email" id="email" required placeholder="ditt.namn@mail.se">
+      <textarea name="message" id="message" required placeholder="Skriv snälla saker här!"></textarea>
+      <button type="submit">👋</button>
     </form>
   </div>
 
